@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 
-const countdownTarget = new Date("2024-06-31T23:59:59");
-
-const calculateTimeLeft = () => {
+const calculateTimeLeft = (countdownTarget) => {
     const totalTimeLeft = countdownTarget - new Date();
     const days = Math.floor(totalTimeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((totalTimeLeft / (1000 * 60 * 60)) % 24);
@@ -12,16 +10,17 @@ const calculateTimeLeft = () => {
     return [{ label: 'days', value: days }, { label: 'hours', value: hours }, { label: 'minutes', value: minutes }, { label: 'seconds', value: seconds }];
 }
 
-const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+const CountdownTimer = ({ targetDate }) => {
+    const countdownTarget = new Date(targetDate);
+    const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(countdownTarget));
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
+            setTimeLeft(calculateTimeLeft(countdownTarget));
         }, 1000)
 
         return () => clearInterval(timer);
-    }, []);
+    }, [countdownTarget]);
 
     return (
         <div className="countdown">
