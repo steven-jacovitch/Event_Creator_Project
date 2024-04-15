@@ -1,34 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import CountdownTimer from './assets/components/CountdownTimer'
 import InputBox from './assets/components/InputBox'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [eventName, setEventName] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [targetDate, setTargetDate] = useState(null);
+
+  const handleSubmit = () => {
+    // Combine date and time into a single string
+    const dateTime = `${date}T${time}`;
+    setTargetDate(dateTime);
+  };
 
   return (
-    <>
-      <div>
-        <InputBox />
-        <button>Submit</button>
-        <CountdownTimer />
-      </div>
-      <h1>Final</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <InputBox
+        eventName={eventName}
+        date={date}
+        time={time}
+        handleEventNameChange={e => setEventName(e.target.value)}
+        handleDateChange={e => setDate(e.target.value)}
+        handleTimeChange={e => setTime(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Submit</button>
+      {targetDate && <CountdownTimer targetDate={targetDate} />}
+    </div>
+  );
+};
 
-export default App
+export default App;

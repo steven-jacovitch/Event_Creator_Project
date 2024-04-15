@@ -5,12 +5,12 @@ import React from 'react';
 // the values that the user inputs will be used to calculate the time left for the event
 // and display it in the countdown timer component
 
-const InputBox = () => {
+const InputBox = ({ eventName, date, time, handleEventNameChange, handleDateChange, handleTimeChange }) => {
     return (
         <div className="input-box">
-            <input type="text" placeholder="Event Name" />
-            <input type="date" />
-            <input type="time" />
+            <input type="text" placeholder="Event Name" value={eventName} onChange={handleEventNameChange} />
+            <input type="date" value={date} onChange={handleDateChange} />
+            <input type="time" value={time} onChange={handleTimeChange} />
         </div>
     )
 }
