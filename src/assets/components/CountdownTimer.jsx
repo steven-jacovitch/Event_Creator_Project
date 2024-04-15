@@ -25,7 +25,7 @@ const CountdownTimer = ({ targetDate }) => {
 
     return (
         <div className="countdown">
-            <h2>Time Remaining</h2>
+            <h3>Time Remaining</h3>
             <div className="content">
                 {timeLeft.map(item => (
                     <div className="box" key={item.label}>

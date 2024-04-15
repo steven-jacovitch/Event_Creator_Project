@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import CountdownTimer from './assets/components/CountdownTimer'
+import Event from './assets/components/Event'
 import InputBox from './assets/components/InputBox'
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
       <button onClick={handleSubmit}>Submit</button>
 
       <div className="event-container">
-        {targetDate && <CountdownTimer targetDate={targetDate} />}
+        {targetDate && <Event eventName={eventName} targetDate={targetDate}/>}
       </div>
     </div>
   );
