@@ -9,11 +9,11 @@ const calculateTimeLeft = () => {
     const hours = Math.floor((totalTimeLeft / (1000 * 60 * 60)) % 24);
     const minutes = Math.floor((totalTimeLeft / 1000 / 60) % 60);
     const seconds = Math.floor((totalTimeLeft / 1000) % 60);
-    return { days, hours, minutes, seconds };
+    return [{ label: 'days', value: days }, { label: 'hours', value: hours }, { label: 'minutes', value: minutes }, { label: 'seconds', value: seconds }];
 }
 
 const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -27,14 +27,14 @@ const CountdownTimer = () => {
         <div className="countdown">
             <h2>Countdown</h2>
             <div className="content">
-                {Object.entries(timeLeft).map(([label, value]) => (
-                    <div className="box" key={label}>
-                        <div className="value">
-                            <span>{value}</span>
-                        </div>
-                        <span className="label">{label}</span>
+            {timeLeft.map(item => (
+                <div className="box" key={item.label}>
+                    <div className="value">
+                        <span>{item.value}</span>
                     </div>
-                ))}
+                    <span className="label">{item.label}</span>
+                </div>
+            ))}
             </div>
         </div>
     )
