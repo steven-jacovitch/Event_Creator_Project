@@ -17,6 +17,8 @@ const App = () => {
 
   return (
     <div>
+      <h1>Event Creator</h1>
+      <p>Create an event and see the countdown!</p>
       <InputBox
         eventName={eventName}
         date={date}
@@ -26,7 +28,10 @@ const App = () => {
         handleTimeChange={e => setTime(e.target.value)}
       />
       <button onClick={handleSubmit}>Submit</button>
-      {targetDate && <CountdownTimer targetDate={targetDate} />}
+
+      <div className="event-container">
+        {targetDate && <CountdownTimer targetDate={targetDate} />}
+      </div>
     </div>
   );
 };
