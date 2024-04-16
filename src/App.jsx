@@ -70,14 +70,14 @@ const App = () => {
       </div>
 
       <div className="event-container">
-        {events.map((event, index) => (
-          <Event
-            key={index}
-            eventName={event.eventName}
-            targetDate={event.targetDate}
-            onRemove={() => handleRemove(index)}
-          />
-        ))}
+          {events.map((event, index) => (
+            <Event
+              key={index}
+              eventName={event.eventName}
+              targetDate={event.targetDate}
+              onRemove={() => handleRemove(index)}
+            />
+          ))}
       </div>
     </div>
   );
