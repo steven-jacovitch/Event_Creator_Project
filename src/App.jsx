@@ -21,6 +21,7 @@ const App = () => {
   }, []);
 
   const handleSubmit = () => {
+
     // Combine date and time into a single string
     const dateTime = `${date}T${time}`;
 
@@ -50,7 +51,15 @@ const App = () => {
 
     // Save the new events array to local storage
     localStorage.setItem('events', JSON.stringify(newEvents));
-};
+  };
+
+  const sortEvents = (events) => {
+    return events.sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate));
+  };
+
+  const sortedEvents = sortEvents(events);
+
+  const isValid = eventName !== '' && date !== '' && time !== '';
 
   return (
     <div>
@@ -66,18 +75,18 @@ const App = () => {
           handleDateChange={e => setDate(e.target.value)}
           handleTimeChange={e => setTime(e.target.value)}
         />
-        <button className="button-64" role="button" onClick={handleSubmit}><span className="text">Add Event</span></button>
+        <button className={!isValid ? "disabled" : "button-64"} role="button" onClick={handleSubmit} disabled={!isValid}><span className="text">Add Event</span></button>
       </div>
 
       <div className="event-container">
-          {events.map((event, index) => (
-            <Event
-              key={index}
-              eventName={event.eventName}
-              targetDate={event.targetDate}
-              onRemove={() => handleRemove(index)}
-            />
-          ))}
+        {sortedEvents.map((event, index) => (
+          <Event
+            key={index}
+            eventName={event.eventName}
+            targetDate={event.targetDate}
+            onRemove={() => handleRemove(index)}
+          />
+        ))}
       </div>
     </div>
   );

@@ -87,5 +87,8 @@ input {
   padding: 20px;
   margin: 20px;
   color: #333;
+}
 
+.disabled {
+  background-color: #333;
 }
