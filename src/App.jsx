@@ -28,7 +28,7 @@ const App = () => {
     // Create a new event
     const event = {
       eventName,
-      targetDate: dateTime
+      targetDate: dateTime,
     };
 
     // Add the new event to the events array

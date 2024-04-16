@@ -92,3 +92,32 @@ input {
 .disabled {
   background-color: #333;
 }
+
+.event-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.button-text {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+}
+
+.input {
+  flex: 1;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.todo-text {
+  font-size: 30px;
+}
