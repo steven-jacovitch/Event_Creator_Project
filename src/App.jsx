@@ -56,15 +56,18 @@ const App = () => {
     <div>
       <h1>Event Creator</h1>
       <p>Create an event and see the countdown!</p>
-      <InputBox
-        eventName={eventName}
-        date={date}
-        time={time}
-        handleEventNameChange={e => setEventName(e.target.value)}
-        handleDateChange={e => setDate(e.target.value)}
-        handleTimeChange={e => setTime(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add Event</button>
+      <div className="input-container">
+        <InputBox
+          className="input-box"
+          eventName={eventName}
+          date={date}
+          time={time}
+          handleEventNameChange={e => setEventName(e.target.value)}
+          handleDateChange={e => setDate(e.target.value)}
+          handleTimeChange={e => setTime(e.target.value)}
+        />
+        <button className="button-64" role="button" onClick={handleSubmit}><span className="text">Add Event</span></button>
+      </div>
 
       <div className="event-container">
         {events.map((event, index) => (
