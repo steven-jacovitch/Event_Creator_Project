@@ -45,6 +45,11 @@ const App = () => {
   };
 
   const handleRemove = index => {
+    // Ask the user to confirm the deletion
+    const confirmDeletion = window.confirm('Are you sure you want to delete this event?');
+    if (!confirmDeletion) {
+      return;
+    }
     // Remove the event from the events array
     const newEvents = events.filter((event, i) => i !== index);
     setEvents(newEvents);
