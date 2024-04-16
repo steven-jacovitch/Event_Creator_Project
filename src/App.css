@@ -13,10 +13,10 @@
 
 .button-64 {
   align-items: center;
-  background-image: linear-gradient(144deg,#144b40, #16c4a1 50%,#144b40);
+  background-image: linear-gradient(144deg, #00274C, #166fc3 50%,#00274C);
   border: 0;
   border-radius: 8px;
-  box-shadow: rgba(29, 128, 119, 0.2) 0 15px 30px -5px;
+  box-shadow: rgba(62, 62, 7, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #FFFFFF;
   display: flex;
@@ -41,7 +41,7 @@
 }
 
 .button-64 span {
-  background-color: rgb(2, 49, 37);
+  background-color: #00274C;
   padding: 16px 24px;
   border-radius: 6px;
   width: 100%;
@@ -74,6 +74,7 @@ input {
 .input-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 .button-container {
@@ -120,4 +121,10 @@ input {
 
 .todo-text {
   font-size: 30px;
+}
+
+.label {
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
 }
