@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Event from './assets/components/Event'
 import InputBox from './assets/components/InputBox'
@@ -7,12 +7,35 @@ const App = () => {
   const [eventName, setEventName] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [targetDate, setTargetDate] = useState(null);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    // Load the events from local storage
+    const savedEvents = localStorage.getItem('events');
+
+    if (savedEvents) {
+      // Parse the events array and update the state
+      const events = JSON.parse(savedEvents);
+      setEvents(events);
+    }
+  }, []);
 
   const handleSubmit = () => {
     // Combine date and time into a single string
     const dateTime = `${date}T${time}`;
-    setTargetDate(dateTime);
+
+    // Create a new event
+    const event = {
+      eventName,
+      targetDate: dateTime
+    };
+
+    // Add the new event to the events array
+    const newEvents = [...events, event];
+    setEvents(newEvents);
+
+    // Save the events array to local storage
+    localStorage.setItem('events', JSON.stringify(newEvents));
   };
 
   return (
@@ -27,10 +50,12 @@ const App = () => {
         handleDateChange={e => setDate(e.target.value)}
         handleTimeChange={e => setTime(e.target.value)}
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit}>Add Event</button>
 
       <div className="event-container">
-        {targetDate && <Event eventName={eventName} targetDate={targetDate}/>}
+        {events.map((event, index) => (
+          <Event key={index} eventName={event.eventName} targetDate={event.targetDate}/>
+        ))}
       </div>
     </div>
   );

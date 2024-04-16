@@ -8,6 +8,7 @@ const Event = ({ eventName, targetDate }) => {
         <div className="event">
             <h2>{eventName}</h2>
             <CountdownTimer targetDate={targetDate} />
+            <button>Remove Event</button>
         </div>
     )
 }
