@@ -36,7 +36,21 @@ const App = () => {
 
     // Save the events array to local storage
     localStorage.setItem('events', JSON.stringify(newEvents));
+
+    // Clear the input fields
+    setEventName('');
+    setDate('');
+    setTime('');
   };
+
+  const handleRemove = index => {
+    // Remove the event from the events array
+    const newEvents = events.filter((event, i) => i !== index);
+    setEvents(newEvents);
+
+    // Save the new events array to local storage
+    localStorage.setItem('events', JSON.stringify(newEvents));
+};
 
   return (
     <div>
@@ -54,7 +68,12 @@ const App = () => {
 
       <div className="event-container">
         {events.map((event, index) => (
-          <Event key={index} eventName={event.eventName} targetDate={event.targetDate}/>
+          <Event
+            key={index}
+            eventName={event.eventName}
+            targetDate={event.targetDate}
+            onRemove={() => handleRemove(index)}
+          />
         ))}
       </div>
     </div>
