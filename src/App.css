@@ -44,8 +44,6 @@
   background-color: #00274C;
   padding: 16px 24px;
   border-radius: 6px;
-  width: 100%;
-  height: 100%;
   transition: 300ms;
 }
 
@@ -127,4 +125,10 @@ input {
   color: #333;
   font-size: 20px;
   font-weight: 600;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

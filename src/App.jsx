@@ -21,7 +21,6 @@ const App = () => {
   }, []);
 
   const handleSubmit = () => {
-
     // Combine date and time into a single string
     const dateTime = `${date}T${time}`;
 
@@ -45,16 +44,19 @@ const App = () => {
   };
 
   const handleRemove = index => {
-    // Ask the user to confirm the deletion
     const confirmDeletion = window.confirm('Are you sure you want to delete this event?');
     if (!confirmDeletion) {
       return;
     }
-    // Remove the event from the events array
     const newEvents = events.filter((event, i) => i !== index);
     setEvents(newEvents);
+    localStorage.setItem('events', JSON.stringify(newEvents));
+  };
 
-    // Save the new events array to local storage
+  const handleUpdate = (updatedEvent, index) => {
+    // Create a new array with the updated event
+    const newEvents = events.map((event, i) => i === index ? updatedEvent : event);
+    setEvents(newEvents);
     localStorage.setItem('events', JSON.stringify(newEvents));
   };
 
@@ -90,6 +92,8 @@ const App = () => {
             eventName={event.eventName}
             targetDate={event.targetDate}
             onRemove={() => handleRemove(index)}
+            onUpdate={(updatedEvent) => handleUpdate(updatedEvent, index)}
+            event={event}
           />
         ))}
       </div>
