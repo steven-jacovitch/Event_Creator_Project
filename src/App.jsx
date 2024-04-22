@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Event from './assets/components/Event'
-import InputBox from './assets/components/InputBox'
+import Event from './components/Event'
+import InputBox from './components/InputBox'
 
 const App = () => {
   const [eventName, setEventName] = useState('');
