@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import './css/App.css'
 import Event from './components/Event'
 import InputBox from './components/InputBox'
 
