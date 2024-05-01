@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './css/App.css'
 import Event from './components/Event'
 import InputBox from './components/InputBox'
@@ -8,17 +8,6 @@ const App = () => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [events, setEvents] = useState([]);
-
-  useEffect(() => {
-    // Load the events from local storage
-    const savedEvents = localStorage.getItem('events');
-
-    if (savedEvents) {
-      // Parse the events array and update the state
-      const events = JSON.parse(savedEvents);
-      setEvents(events);
-    }
-  }, []);
 
   const handleSubmit = () => {
     // Combine date and time into a single string
