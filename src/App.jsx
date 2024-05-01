@@ -77,9 +77,6 @@ const App = () => {
       <div className="event-container">
         {sortedEvents.map((event, index) => (
           <Event
-            key={index}
-            eventName={event.eventName}
-            targetDate={event.targetDate}
             onRemove={() => handleRemove(index)}
             onUpdate={(updatedEvent) => handleUpdate(updatedEvent, index)}
             event={event}
